@@ -23,7 +23,7 @@ public class BrandController {
         this.brandService = brandService;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public List<GetAllBrandResponse> getAll(){
         return brandService.getAll();
     }
@@ -32,7 +32,7 @@ public class BrandController {
         return brandService.getById(id);
     }
 
-    @PostMapping("/add")
+    @PostMapping("/")
     public void add(@RequestBody CreateBrandRequest createBrandRequest){
         brandService.add(createBrandRequest);
     }
