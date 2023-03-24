@@ -3,7 +3,9 @@ package kodlama.io.rentACar.webApi.controller;
 
 import kodlama.io.rentACar.business.abstracts.BrandService;
 import kodlama.io.rentACar.business.request.CreateBrandRequest;
+import kodlama.io.rentACar.business.request.UpdateBrandRequest;
 import kodlama.io.rentACar.business.response.GetAllBrandResponse;
+import kodlama.io.rentACar.business.response.GetByIdBrandResponse;
 import kodlama.io.rentACar.entity.concrete.Brand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,11 +28,8 @@ public class BrandController {
         return brandService.getAll();
     }
     @GetMapping("/{id}")
-    public GetAllBrandResponse getBrandById(@PathVariable int id){
-       Brand brand =  brandService.getById(id);
-       GetAllBrandResponse getAllBrandResponse = new GetAllBrandResponse();
-       getAllBrandResponse.setName(brand.getName());
-        return getAllBrandResponse;
+    public GetByIdBrandResponse getBrandById(@PathVariable int id){
+        return brandService.getById(id);
     }
 
     @PostMapping("/add")
@@ -38,11 +37,15 @@ public class BrandController {
         brandService.add(createBrandRequest);
     }
 
-    @PutMapping("{id}")
-    public void update(@PathVariable int id,@RequestBody CreateBrandRequest createBrandRequest){
-        brandService.update(id,createBrandRequest);
+    @PutMapping()
+    public void update(@RequestBody UpdateBrandRequest updateBrandRequest){
+       brandService.update(updateBrandRequest);
     }
 
+    @DeleteMapping("{id}")
+    public void delete (@PathVariable int id){
+        brandService.delete(id);
 
+    }
 
 }

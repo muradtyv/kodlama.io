@@ -2,7 +2,8 @@ package kodlama.io.rentACar.business.abstracts;
 
 import kodlama.io.rentACar.business.request.CreateBrandRequest;
 import kodlama.io.rentACar.business.response.GetAllBrandResponse;
-import kodlama.io.rentACar.entity.concrete.Brand;
+import kodlama.io.rentACar.business.response.GetByIdBrandResponse;
+import kodlama.io.rentACar.business.request.UpdateBrandRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +15,9 @@ public interface BrandService {
 
     void add(CreateBrandRequest ceCreateBrandRequest);
 
-    void update(int id, CreateBrandRequest updateBrandRequest);
+    void update(UpdateBrandRequest updateBrandRequest);
 
-    Brand getById(int id);
+    GetByIdBrandResponse getById(int id);
+
+    void delete(int id);
 }
